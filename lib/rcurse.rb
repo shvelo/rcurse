@@ -8,6 +8,12 @@ module Rcurse
     end
 
     class Helper
+        attr_accessor :name
+        attr_accessor :callback
 
+        def initialize name, &callback
+            @name = name
+            @callback = callback
+        end
     end
 end
