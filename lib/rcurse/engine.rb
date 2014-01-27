@@ -13,8 +13,8 @@ module Rcurse
         file_contents = File.read filename
         file_contents.gsub /{{([^ ]+) *(.+)?}}/ do |s|
             name = $1
-            args = $2.split(" ") if $2
-            if @helpers[name] then
+            args = $2 ? $2.split(" ") : []
+            if @helpers[name].is_a? Rcurse::Helper then
                 @helpers[name].callback.call(args)
             end
         end
