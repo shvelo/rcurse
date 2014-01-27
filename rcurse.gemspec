@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'rcurse'
-  s.version     = '0.2.0'
+  s.version     = '0.2.5'
   s.licenses    = ['MIT']
   s.summary     = "Super simple template engine."
   s.description = "Super simple template engine."

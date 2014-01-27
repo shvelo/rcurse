@@ -1,3 +1,6 @@
+project_root = File.dirname(File.absolute_path(__FILE__))
+
 require "rcurse/engine"
 require "rcurse/helper"
-require "rcurse/helpers/include"
+
+Dir.glob(project_root + '/rcurse/helpers/*.rb', &method(:require))
