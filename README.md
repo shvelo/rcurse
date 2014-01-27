@@ -19,9 +19,7 @@ Let's assume that we have file names `index.rcurse` and want to render it to `in
 
 ```ruby
 require 'rcurse'
-File.open("index.html", "w+") do |file|
-	file.write(Rcurse.render("index.rcurse"))
-end
+Rcurse.render_file("index.rcurse", "index.html")
 ```
 
 ## Helpers
