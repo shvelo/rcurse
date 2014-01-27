@@ -6,6 +6,6 @@ Gem::Specification.new do |s|
   s.description = "Super simple template engine."
   s.authors     = ["Nick Shvelidze"]
   s.email       = 'captain@pirrate.me'
-  s.files       = ["lib/rcurse.rb"]
+  s.files       = `git ls-files`.split("\n")
   s.homepage    = 'shvelo.github.io/rcurse'
 end
