@@ -1,19 +1,3 @@
-module Rcurse
-    def render filename
-        file_contents = File.read file
-        rendered_file = fileContents.gsub /{{ *include (.+)*}}/ do |s|
-            render(File.join "src", $1)
-        end
-        rendered_file
-    end
-
-    class Helper
-        attr_accessor :name
-        attr_accessor :callback
-
-        def initialize name, &callback
-            @name = name
-            @callback = callback
-        end
-    end
-end
+require "rcurse/engine"
+require "rcurse/helper"
+require "rcurse/helpers/include"
