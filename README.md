@@ -18,7 +18,7 @@ Call `Rcurse.render "file.rcurse"` to render `file.rcurse` and return the render
 Let's assume that we have file names `index.rcurse` and want to render it to `index.html`
 
 ```ruby
-require 'rcurse`
+require 'rcurse'
 File.open("index.html", "w+") do |file|
 	file.write(Rcurse.render("index.rcurse"))
 end
