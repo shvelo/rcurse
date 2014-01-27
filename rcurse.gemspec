@@ -7,5 +7,5 @@ Gem::Specification.new do |s|
   s.authors     = ["Nick Shvelidze"]
   s.email       = 'captain@pirrate.me'
   s.files       = `git ls-files`.split("\n")
-  s.homepage    = 'shvelo.github.io/rcurse'
+  s.homepage    = 'http://shvelo.github.io/rcurse'
 end
