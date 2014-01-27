@@ -1,1 +1,3 @@
-README.md
+# Rcurse
+
+## Super simple template engine
