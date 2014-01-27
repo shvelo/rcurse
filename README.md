@@ -1,1 +1,3 @@
-<h1>Rcurse <small>- Super simple template engine</small></h1>
+# Rcurse <small>- Super simple template engine</small>
+
+Currently WIP
