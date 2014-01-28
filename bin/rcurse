@@ -1,0 +1,15 @@
+#!/usr/bin/env ruby
+
+require 'rcurse'
+
+def usage
+    puts "rcurse - Render a rcurse template
+rcurse <file> <target>"
+end
+
+if ARGV[0] && ARGV[1]
+    Rcurse.render_file ARGV[0], ARGV[1]
+else
+    usage
+end
+
