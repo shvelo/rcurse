@@ -4,3 +4,5 @@ rcurse_path = project_root + "/lib/rcurse.rb"
 task :spec do
 	system "rspec -f d -r #{rcurse_path}"
 end
+
+task :default => [:spec]
