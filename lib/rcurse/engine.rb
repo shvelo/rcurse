@@ -1,56 +1,44 @@
 module Rcurse
-    @helpers = Hash.new
+    class Engine
+        def self.render content, context = Context.new
+            content.gsub /{({|%|%=)(.+?)[}|%]}/ do |s|
+                result = ""
 
-    def self.add_helper helper
-        @helpers[helper.name] = helper
-    end
+                case $1
+                when "{"
+                    s = $2.split
+                    name = s[0]
+                    args = s[1..s.length]
+                    if @helpers[name].is_a? Rcurse::Helper then
+                        result = @helpers[name].callback.call(args, context)
+                    end
+                    break
+                when "%"
+                    context.eval $2
+                    break
+                when "%="
+                    result = context.eval $2
+                    break
+                end
 
-    def self.helpers
-        @helpers
+                result
+            end
+        end
+
+        def self.render_file filename, out_filename, context = Context.new
+            content = File.read(filename)
+            rendered_content = self.render(content, context)
+            File.open(out_filename, "w+") do |file|
+                file.write(rendered_content)
+            end
+        end
     end
 
     def self.render content, context = Context.new
-        content.gsub /{({|%|%=)(.+?)[}|%]}/ do |s|
-            result = ""
-
-            case $1
-            when "{"
-                s = $2.split
-                name = s[0]
-                args = s[1..s.length]
-                if @helpers[name].is_a? Rcurse::Helper then
-                    result = @helpers[name].callback.call(args, context)
-                end
-                break
-            when "%"
-                result = context.eval $2
-                break
-            when "%="
-                context.eval $2
-                result = ""
-                break
-            end
-
-            result
-        end
-
-        content.gsub /{\%=(.+?)\%}/ do |s|
-            code = $1
-            context.eval code
-        end
-
-        content.gsub /{\%(.+?)\%}/ do |s|
-            code = $1
-            context.eval code
-            nil
-        end
+        Rcurse::Engine.render content, context
     end
 
     def self.render_file filename, out_filename, context = Context.new
-        content = File.read(filename)
-        rendered_content = self.render(content, context)
-        File.open(out_filename, "w+") do |file|
-            file.write(rendered_content)
-        end
+        Rcurse::Engine.render_file filename, out_filename, context
     end
 end
