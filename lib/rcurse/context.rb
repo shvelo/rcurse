@@ -6,5 +6,8 @@ module Rcurse
 		def get_binding
 			@binding
 		end
+		def eval code
+			@binding.eval code
+		end
 	end
 end
