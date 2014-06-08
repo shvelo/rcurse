@@ -10,12 +10,39 @@ module Rcurse
     end
 
     def self.render content, context = Context.new
-        content.gsub /{{([^ ]+) *(.+)?}}/ do |s|
-            name = $1
-            args = $2 ? $2.split(" ") : []
-            if @helpers[name].is_a? Rcurse::Helper then
-                @helpers[name].callback.call(args, context)
+        content.gsub /{({|%|%=)(.+?)[}|%]}/ do |s|
+            result = ""
+
+            case $1
+            when "{"
+                s = $2.split
+                name = s[0]
+                args = s[1..s.length]
+                if @helpers[name].is_a? Rcurse::Helper then
+                    result = @helpers[name].callback.call(args, context)
+                end
+                break
+            when "%"
+                result = context.eval $2
+                break
+            when "%="
+                context.eval $2
+                result = ""
+                break
             end
+
+            result
+        end
+
+        content.gsub /{\%=(.+?)\%}/ do |s|
+            code = $1
+            context.eval code
+        end
+
+        content.gsub /{\%(.+?)\%}/ do |s|
+            code = $1
+            context.eval code
+            nil
         end
     end
 
