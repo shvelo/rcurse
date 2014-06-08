@@ -2,7 +2,7 @@ module Rcurse
     class Engine
         def self.render content, context = Context.new
             content.gsub /{({|%=|%)(.+?)[}|%]}/ do |s|
-                result = ""
+                result = s
 
                 case $1
                 when "{"
@@ -12,13 +12,11 @@ module Rcurse
                     if @helpers[name].is_a? Rcurse::Helper then
                         result = @helpers[name].callback.call(args, context)
                     end
-                    break
                 when "%"
-                    context.eval $2
-                    break
+                    context.eval($2)
+                    result = ""
                 when "%="
-                    result = context.eval $2
-                    break
+                    result = context.eval($2)
                 end
 
                 result
