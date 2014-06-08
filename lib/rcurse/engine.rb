@@ -1,7 +1,7 @@
 module Rcurse
     class Engine
         def self.render content, context = Context.new
-            content.gsub /{({|%|%=)(.+?)[}|%]}/ do |s|
+            content.gsub /{({|%=|%)(.+?)[}|%]}/ do |s|
                 result = ""
 
                 case $1
