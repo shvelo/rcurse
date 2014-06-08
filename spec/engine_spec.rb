@@ -14,6 +14,15 @@ describe Rcurse::Engine do
     expect(result).to eq("გამარჯობა")
   end
 
+  it "renders a hello world file" do
+    file_path = File.expand_path("../../spec-data/hello.html", __FILE__)
+    out_file_path = File.expand_path("../../spec-data/hello.html.out", __FILE__)
+
+    result = Rcurse::render_file(file_path, out_file_path)
+
+    expect(File.new out_file_path).to be_a(File)
+  end
+
   it "renders {% nil %} as empty"do
   	result = Rcurse::render("{% nil %}")
     expect(result).to eq("")
