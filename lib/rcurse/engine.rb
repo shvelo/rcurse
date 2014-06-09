@@ -6,11 +6,11 @@ module Rcurse
 
                 case $1
                 when "{"
-                    s = $2.split
+                    s = $2.chomp.split(" ")
                     name = s[0]
                     args = s[1..s.length]
-                    if @helpers[name].is_a? Rcurse::Helper then
-                        result = @helpers[name].callback.call(args, context)
+                    if Rcurse::helpers[name].is_a? Rcurse::Helper then
+                        result = Rcurse::helpers[name].callback.call(args, context)
                     end
                 when "%"
                     context.eval($2)
@@ -25,6 +25,7 @@ module Rcurse
 
         def self.render_file filename, out_filename, context = Context.new
             content = File.read(filename)
+            context.path = File.dirname(filename)
             rendered_content = self.render(content, context)
             File.open(out_filename, "w+") do |file|
                 file.write(rendered_content)
