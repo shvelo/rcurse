@@ -14,15 +14,16 @@ add `gem "rcurse"` to your `Gemfile` and run `bundle install`
 ## Usage
 
 Require it with `require 'rcurse'`.  
-Call `Rcurse::render "file.rcurse"` to render `file.rcurse` and return the rendered file contents, you can then write it to a file.
+Call `Rcurse::render_file("file.rcurse", "file.html")` to render `file.rcurse` to `file.html`.  
+You can also render a template from a string: `Rcurse::render("rcurse template")`.
 
-### Usage example
+### Command-line usage
 
-Let's assume that we have file names `index.rcurse` and want to render it to `index.html`
+You can use Rcurse from command line: `rcurse <input file> <output file>`  
+For example: 
 
-```ruby
-require 'rcurse'
-Rcurse::render_file("index.rcurse", "index.html")
+```shell
+rcurse index.rcurse index.html
 ```
 
 ## Evaluating code
