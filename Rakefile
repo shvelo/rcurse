@@ -11,6 +11,11 @@ task :doc do
 	system "bundle exec yard --template-path=#{project_root}/doc-templates"
 end
 
+desc "preview docs"
+task :docserver do
+	system "bundle exec yard server --reload --template-path=#{project_root}/doc-templates"
+end
+
 desc "clean up test data"
 task :clean do
 	Dir.glob(project_root + "/spec-data/*.out") do |file|

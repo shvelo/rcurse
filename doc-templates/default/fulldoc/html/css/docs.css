@@ -1,0 +1,27 @@
+body {
+	padding: 20px;
+	font-family: sans-serif;
+	font-size: 16px;
+	margin: 0;
+	color: #2d2d2d;
+}
+
+form.search {
+	color: inherit;
+	padding: 0; 
+	border: none; 
+	width: auto; 
+	background: transparent; 
+	-moz-border-radius: 0;
+	-webkit-border-radius: 0;
+}
+
+form.search input {
+	margin-left: 5px;
+	width: auto;
+	border: 1px solid #2D2D2D;
+	font-family: monospace;
+	border-radius: 4px;
+	padding: 5px;
+	font-size: 16px;
+}
