@@ -1,4 +1,4 @@
-# Rcurse [![Build Status](https://travis-ci.org/shvelo/rcurse.svg?branch=master)](https://travis-ci.org/shvelo/rcurse) [![Gem Version](https://badge.fury.io/rb/rcurse.svg)](http://badge.fury.io/rb/rcurse)
+# Rcurse [![Build Status](https://travis-ci.org/shvelo/rcurse.svg?branch=master)](https://travis-ci.org/shvelo/rcurse) [![Gem Version](https://badge.fury.io/rb/rcurse.svg)](http://badge.fury.io/rb/rcurse) [![Code Climate](https://codeclimate.com/github/shvelo/rcurse.png)](https://codeclimate.com/github/shvelo/rcurse)
 
 
 Rcurse is a super simple template engine written in Ruby.
