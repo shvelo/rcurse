@@ -29,6 +29,7 @@ module Rcurse
             @name = name
             @callback = callback
 
+            # register the helper with Rcurse to use in templates
             Rcurse.add_helper self
         end
     end
