@@ -9,24 +9,44 @@ module Rcurse
         # @param context [Rcurse::Context] a context for the template
         # @return [String] The rendered template
         def self.render content, context = Context.new
-            content.gsub /{({|%=|%)(.+?)[}|%]}/ do |s|
-                result = s
 
-                case $1
-                when "{"
-                    s = $2.chomp.split(" ")
-                    name = s[0]
-                    args = s[1..s.length]
+            # find Rcurse calls in template
+            # Regex explaination - http://goo.gl/vpKPeZ
+            content.gsub /({{|{%=|{%)(.+?)[}|%]}/ do |match|
+                # return unaltered if nothing is done
+                result = match
+
+                type = $1
+                content = $2
+
+                # determine what to do
+                # helper calls start with {{
+                # silent eval calls start with {%
+                # eval calls start with {%=
+                case type
+                when "{{"
+                    content_parts = content.chomp.split(" ")
+                    name = content_parts[0]
+
+                    # omit the first element
+                    args = content_parts[1..-1]
+
+                    # check if helper exists
                     if Rcurse::helpers[name].is_a? Rcurse::Helper then
                         result = Rcurse::helpers[name].callback.call(args, context)
                     end
-                when "%"
-                    context.eval($2)
+                when "{%"
+                    # evaluate code inside {% %}
+                    context.eval(content)
+
+                    # remove code from template
                     result = ""
-                when "%="
-                    result = context.eval($2)
+                when "{%="
+                    # evaluate code and write result to template
+                    result = context.eval(content)
                 end
 
+                # return the result. replacing the Rcurse call
                 result
             end
         end
@@ -41,19 +61,23 @@ module Rcurse
             content = File.read(filename)
             context.path = File.dirname(filename)
             rendered_content = self.render(content, context)
+
+            # write rendered content to output file if specified
             File.open(out_filename, "w+") { |file| file.write(rendered_content) } if out_filename
 
-            rendered_content
+            return rendered_content
         end
     end
 
     # (see Rcurse::Engine.render)
     def self.render content, context = Context.new
+        # proxy
         Rcurse::Engine.render content, context
     end
 
     # (see Rcurse::Engine.render_file)
     def self.render_file filename, out_filename, context = Context.new
+        # proxy
         Rcurse::Engine.render_file filename, out_filename, context
     end
 end
