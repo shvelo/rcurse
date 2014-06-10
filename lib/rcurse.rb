@@ -5,3 +5,7 @@ require project_root + "/rcurse/helper.rb"
 require project_root + "/rcurse/context.rb"
 
 Dir.glob(project_root + '/rcurse/helpers/*.rb', &method(:require))
+
+# Rcurse - super simple template engine
+module Rcurse
+end

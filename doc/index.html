@@ -1,0 +1,141 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>
+  File: README
+  
+    &mdash; Documentation by YARD 0.8.7.4
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '';
+  framesUrl = "frames.html#!file.README.html";
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html">Index</a> &raquo; 
+    <span class="title">File: README</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><div id='filecontents'><h1>Rcurse <small>- Super simple template engine</small></h1>
+
+<h2>Installation</h2>
+
+<p>Install it with <code>gem install rcurse</code>, </p>
+
+<h3>Using Bundler</h3>
+
+<p>add <code>gem &quot;rcurse&quot;</code> to your <code>Gemfile</code> and run <code>bundle install</code></p>
+
+<h2>Usage</h2>
+
+<p>Require it with <code>require &#39;rcurse&#39;</code>.<br>
+Call <code>Rcurse::render &quot;file.rcurse&quot;</code> to render <code>file.rcurse</code> and return the rendered file contents, you can then write it to a file.</p>
+
+<h3>Usage example</h3>
+
+<p>Let&#39;s assume that we have file names <code>index.rcurse</code> and want to render it to <code>index.html</code></p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>rcurse</span><span class='tstring_end'>&#39;</span></span>
+<span class='const'>Rcurse</span><span class='op'>::</span><span class='id identifier rubyid_render_file'>render_file</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>index.rcurse</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>index.html</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+</code></pre>
+
+<h2>Evaluating code</h2>
+
+<p>Wrap your Ruby code in <code>{%</code> and <code>%}</code> to evaluate it. You can use it to set variables or do other stuff. This doesn&#39;t output anything to the template, if you want to output the result of your code, use <code>{%=</code> instead of <code>{%</code>, like <code>{%= &quot;trololo&quot;.upcase %}</code>.</p>
+
+<h3>Examples</h3>
+
+<p>Using variables:  </p>
+
+<pre class="code html"><code class="html">{% name = &quot;Hodor&quot; %}
+
+&lt;h1&gt;Hello, {%= name %}!&lt;/h1&gt;
+</code></pre>
+
+<p>Renders as:</p>
+
+<pre class="code html"><code class="html">&lt;h1&gt;Hello, Hodor!&lt;/h1&gt;
+</code></pre>
+
+<h2>Context</h2>
+
+<p>Context contains a binding for template variables, and a path of current template if Rcurse is rendering a file.<br>
+Use <code>context.eval</code> to evaluate Ruby code.</p>
+
+<p><code>context.eval &quot;a = 1&quot;</code></p>
+
+<p>See <code>context.path</code> for the path of currently rendered template.</p>
+
+<h2>Helpers</h2>
+
+<p>Helpers are like functions you can call in your templates. Use them by inserting <code>{{helper-name arguments}}</code> in source files.   </p>
+
+<h3>Builtin helpers</h3>
+
+<ul>
+<li><code>include filename</code> - include another file, like so: <code>{{include header.rcurse}}</code></li>
+</ul>
+
+<h3>Adding a helper</h3>
+
+<p>Use <code>Rcurse::Helper.new(name) { |args, context| do_something }</code> to create a helper, your block can accept a single array of arguments and a context.  </p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_my_helper'>my_helper</span> <span class='op'>=</span> <span class='const'>Rcurse</span><span class='op'>::</span><span class='const'>Helper</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>my_helper</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_arguments'>arguments</span><span class='comma'>,</span> <span class='id identifier rubyid_context'>context</span><span class='op'>|</span>
+    <span class='comment'># do something with arguments and return a string containing the new content
+</span><span class='kw'>end</span>
+</code></pre>
+</div></div>
+
+    <div id="footer">
+  Generated on Tue Jun 10 21:38:46 2014 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.7.4 (ruby-2.0.0).
+</div>
+
+  </body>
+</html>
