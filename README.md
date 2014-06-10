@@ -1,4 +1,7 @@
-# Rcurse <small>- Super simple template engine</small>
+# Rcurse [![Build Status](https://travis-ci.org/shvelo/rcurse.svg?branch=master)](https://travis-ci.org/shvelo/rcurse)
+
+
+Rcurse is a super simple template engine written in Ruby.
 
 ## Installation
 
