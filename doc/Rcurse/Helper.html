@@ -99,7 +99,18 @@
 </dl>
 <div class="clear"></div>
 
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<p>Rcurse helper</p>
 
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
 
 
 
@@ -127,7 +138,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Returns the value of attribute callback.</p>
+<p>Helper callback.</p>
 </div></span>
   
 </li>
@@ -154,7 +165,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Returns the value of attribute name.</p>
+<p>Helper name.</p>
 </div></span>
   
 </li>
@@ -193,7 +204,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>A new instance of Helper.</p>
+<p>Create a helper.</p>
 </div></span>
   
 </li>
@@ -217,13 +228,49 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Returns a new instance of Helper</p>
+<p>Create a helper</p>
 
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>name</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>helper name</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>callback</span>
+      
+      
+        <span class='type'>(<tt>Block</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>callback, the helper body</p>
+</div>
+      
+    </li>
+  
+</ul>
+
 
 </div><table class="source_code">
   <tr>
@@ -231,15 +278,15 @@
       <pre class="lines">
 
 
-16
-17
-18
-19
-20
-21</pre>
+28
+29
+30
+31
+32
+33</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/rcurse/helper.rb', line 16</span>
+      <pre class="code"><span class="info file"># File 'lib/rcurse/helper.rb', line 28</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span> <span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_callback'>callback</span>
     <span class='ivar'>@name</span> <span class='op'>=</span> <span class='id identifier rubyid_name'>name</span>
@@ -271,7 +318,7 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Returns the value of attribute callback</p>
+<p>Helper callback</p>
 
 
   </div>
@@ -285,12 +332,12 @@
       <pre class="lines">
 
 
-14
-15
-16</pre>
+22
+23
+24</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/rcurse/helper.rb', line 14</span>
+      <pre class="code"><span class="info file"># File 'lib/rcurse/helper.rb', line 22</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_callback'>callback</span>
   <span class='ivar'>@callback</span>
@@ -314,7 +361,7 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Returns the value of attribute name</p>
+<p>Helper name</p>
 
 
   </div>
@@ -328,12 +375,12 @@
       <pre class="lines">
 
 
-13
-14
-15</pre>
+19
+20
+21</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/rcurse/helper.rb', line 13</span>
+      <pre class="code"><span class="info file"># File 'lib/rcurse/helper.rb', line 19</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_name'>name</span>
   <span class='ivar'>@name</span>
@@ -349,7 +396,7 @@
 </div>
 
     <div id="footer">
-  Generated on Tue Jun 10 21:38:47 2014 by
+  Generated on Tue Jun 10 22:29:58 2014 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.7.4 (ruby-2.0.0).
 </div>

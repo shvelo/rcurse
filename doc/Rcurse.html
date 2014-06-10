@@ -79,14 +79,25 @@
   
   
     <dt class="r1 last">Defined in:</dt>
-    <dd class="r1 last">lib/rcurse/engine.rb<span class="defines">,<br />
-  lib/rcurse/helper.rb,<br /> lib/rcurse/context.rb</span>
+    <dd class="r1 last">lib/rcurse.rb<span class="defines">,<br />
+  lib/rcurse/engine.rb,<br /> lib/rcurse/helper.rb,<br /> lib/rcurse/context.rb</span>
 </dd>
   
 </dl>
 <div class="clear"></div>
 
-<h2>Defined Under Namespace</h2>
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<p>Rcurse - super simple template engine</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><h2>Defined Under Namespace</h2>
 <p class="children">
   
     
@@ -128,7 +139,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Add a helper to Rcurse, called automatically when creating a helper.</p>
+</div></span>
   
 </li>
 
@@ -136,7 +149,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#helpers-class_method" title="helpers (class method)">+ (Object) <strong>helpers</strong> </a>
+      <a href="#helpers-class_method" title="helpers (class method)">+ (Hash&lt;Rcurse::Helper&gt;) <strong>helpers</strong> </a>
     
 
     
@@ -150,7 +163,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Available helpers.</p>
+</div></span>
   
 </li>
 
@@ -158,7 +173,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#render-class_method" title="render (class method)">+ (Object) <strong>render</strong>(content, context = Context.new) </a>
+      <a href="#render-class_method" title="render (class method)">+ (String) <strong>render</strong>(content, context = Context.new) </a>
     
 
     
@@ -172,7 +187,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Render a template.</p>
+</div></span>
   
 </li>
 
@@ -180,7 +197,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#render_file-class_method" title="render_file (class method)">+ (Object) <strong>render_file</strong>(filename, out_filename, context = Context.new) </a>
+      <a href="#render_file-class_method" title="render_file (class method)">+ (String) <strong>render_file</strong>(filename, out_filename, context = Context.new) </a>
     
 
     
@@ -194,7 +211,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Render a template file, optionally writing output to another file.</p>
+</div></span>
   
 </li>
 
@@ -217,18 +236,29 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Add a helper to Rcurse, called automatically when creating a helper</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-4
 5
-6</pre>
+6
+7</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/rcurse/helper.rb', line 4</span>
+      <pre class="code"><span class="info file"># File 'lib/rcurse/helper.rb', line 5</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_add_helper'>add_helper</span> <span class='id identifier rubyid_helper'>helper</span>
     <span class='ivar'>@helpers</span><span class='lbracket'>[</span><span class='id identifier rubyid_helper'>helper</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_helper'>helper</span>
@@ -241,24 +271,53 @@
       <div class="method_details ">
   <h3 class="signature " id="helpers-class_method">
   
-    + (<tt>Object</tt>) <strong>helpers</strong> 
+    + (<tt>Hash&lt;<span class='object_link'><a href="Rcurse/Helper.html" title="Rcurse::Helper (class)">Rcurse::Helper</a></span>&gt;</tt>) <strong>helpers</strong> 
   
 
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Available helpers</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Hash&lt;<span class='object_link'><a href="Rcurse/Helper.html" title="Rcurse::Helper (class)">Rcurse::Helper</a></span>&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Available helpers, with helper names as keys</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-8
-9
-10</pre>
+12
+13
+14</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/rcurse/helper.rb', line 8</span>
+      <pre class="code"><span class="info file"># File 'lib/rcurse/helper.rb', line 12</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_helpers'>helpers</span>
     <span class='ivar'>@helpers</span>
@@ -271,24 +330,91 @@
       <div class="method_details ">
   <h3 class="signature " id="render-class_method">
   
-    + (<tt>Object</tt>) <strong>render</strong>(content, context = Context.new) 
+    + (<tt>String</tt>) <strong>render</strong>(content, context = Context.new) 
   
 
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Render a template</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>content</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>A String containing the Rcurse template</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>context</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Rcurse/Context.html" title="Rcurse::Context (class)">Rcurse::Context</a></span></tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>Context.new</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>a context for the template</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The rendered template</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-36
-37
-38</pre>
+51
+52
+53</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/rcurse/engine.rb', line 36</span>
+      <pre class="code"><span class="info file"># File 'lib/rcurse/engine.rb', line 51</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_render'>render</span> <span class='id identifier rubyid_content'>content</span><span class='comma'>,</span> <span class='id identifier rubyid_context'>context</span> <span class='op'>=</span> <span class='const'>Context</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
     <span class='const'>Rcurse</span><span class='op'>::</span><span class='const'>Engine</span><span class='period'>.</span><span class='id identifier rubyid_render'>render</span> <span class='id identifier rubyid_content'>content</span><span class='comma'>,</span> <span class='id identifier rubyid_context'>context</span>
@@ -301,24 +427,107 @@
       <div class="method_details ">
   <h3 class="signature " id="render_file-class_method">
   
-    + (<tt>Object</tt>) <strong>render_file</strong>(filename, out_filename, context = Context.new) 
+    + (<tt>String</tt>) <strong>render_file</strong>(filename, out_filename, context = Context.new) 
   
 
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Render a template file, optionally writing output to another file</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>filename</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>A String containing the Rcurse template</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>out_filename</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Optional, file to write output to</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>context</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Rcurse/Context.html" title="Rcurse::Context (class)">Rcurse::Context</a></span></tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>Context.new</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>a context for the template</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The rendered template</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-40
-41
-42</pre>
+56
+57
+58</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/rcurse/engine.rb', line 40</span>
+      <pre class="code"><span class="info file"># File 'lib/rcurse/engine.rb', line 56</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_render_file'>render_file</span> <span class='id identifier rubyid_filename'>filename</span><span class='comma'>,</span> <span class='id identifier rubyid_out_filename'>out_filename</span><span class='comma'>,</span> <span class='id identifier rubyid_context'>context</span> <span class='op'>=</span> <span class='const'>Context</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
     <span class='const'>Rcurse</span><span class='op'>::</span><span class='const'>Engine</span><span class='period'>.</span><span class='id identifier rubyid_render_file'>render_file</span> <span class='id identifier rubyid_filename'>filename</span><span class='comma'>,</span> <span class='id identifier rubyid_out_filename'>out_filename</span><span class='comma'>,</span> <span class='id identifier rubyid_context'>context</span>
@@ -333,7 +542,7 @@
 </div>
 
     <div id="footer">
-  Generated on Tue Jun 10 21:38:47 2014 by
+  Generated on Tue Jun 10 22:29:58 2014 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.7.4 (ruby-2.0.0).
 </div>
