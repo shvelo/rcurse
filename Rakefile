@@ -8,7 +8,7 @@ end
 
 desc "generate docs"
 task :doc do
-	system "bundle exec yard"
+	system "bundle exec yard --template-path=#{project_root}/doc-templates"
 end
 
 desc "clean up test data"
