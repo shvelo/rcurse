@@ -76,14 +76,15 @@
 <h2>Usage</h2>
 
 <p>Require it with <code>require &#39;rcurse&#39;</code>.<br>
-Call <code>Rcurse::render &quot;file.rcurse&quot;</code> to render <code>file.rcurse</code> and return the rendered file contents, you can then write it to a file.</p>
+Call <code>Rcurse::render_file(&quot;file.rcurse&quot;, &quot;file.html&quot;)</code> to render <code>file.rcurse</code> to <code>file.html</code>.<br>
+You can also render a template from a string: <code>Rcurse::render(&quot;rcurse template&quot;)</code>.</p>
 
-<h3>Usage example</h3>
+<h3>Command-line usage</h3>
 
-<p>Let&#39;s assume that we have file names <code>index.rcurse</code> and want to render it to <code>index.html</code></p>
+<p>You can use Rcurse from command line: <code>rcurse &lt;input file&gt; &lt;output file&gt;</code><br>
+For example: </p>
 
-<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>rcurse</span><span class='tstring_end'>&#39;</span></span>
-<span class='const'>Rcurse</span><span class='op'>::</span><span class='id identifier rubyid_render_file'>render_file</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>index.rcurse</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>index.html</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+<pre class="code shell"><code class="shell">rcurse index.rcurse index.html
 </code></pre>
 
 <h2>Evaluating code</h2>
@@ -134,7 +135,7 @@ Use <code>context.eval</code> to evaluate Ruby code.</p>
 </div></div>
 
     <div id="footer">
-  Generated on Wed Jun 11 00:27:37 2014 by
+  Generated on Wed Jun 11 00:41:39 2014 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.7.4 (ruby-2.0.0).
 </div>
